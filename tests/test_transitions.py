@@ -1,17 +1,17 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import Locators
-from conftyest import driver
+from conftest import driver, accaunt_email, accaunt_password
 
 
 class TestTransitions:
     # переход по клику на «Личный кабинет».
-    def test_transitions_personal_accaunt(self, driver):
+    def test_transitions_personal_accaunt(self, driver, accaunt_email, accaunt_password):
         driver.find_element(*Locators.BUTTON_LOGIN).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.REGISTRATION_URL))
-        driver.find_element(*Locators.EMAIL_2).send_keys("Malgina_6@gmail.com")
-        driver.find_element(*Locators.PASSWORD_2).send_keys("1q2w2q1w")
+        driver.find_element(*Locators.EMAIL_2).send_keys(accaunt_email)
+        driver.find_element(*Locators.PASSWORD_2).send_keys(accaunt_password)
         driver.find_element(*Locators.LOGIN_BUTTON).click()
         driver.find_element(*Locators.ACCAUNT_BUTTON).click()
         WebDriverWait(driver, 10).until(
@@ -19,12 +19,12 @@ class TestTransitions:
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
 
     # Проверь переход по клику на «Конструктор» и на логотип Stellar Burgers.
-    def test_transitions_constructor(self, driver):
+    def test_transitions_constructor(self, driver, accaunt_email, accaunt_password):
         driver.find_element(*Locators.BUTTON_LOGIN).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.REGISTRATION_URL))
-        driver.find_element(*Locators.EMAIL_2).send_keys("Malgina_6@gmail.com")
-        driver.find_element(*Locators.PASSWORD_2).send_keys("1q2w2q1w")
+        driver.find_element(*Locators.EMAIL_2).send_keys(accaunt_email)
+        driver.find_element(*Locators.PASSWORD_2).send_keys(accaunt_password)
         driver.find_element(*Locators.LOGIN_BUTTON).click()
         driver.find_element(*Locators.ACCAUNT_BUTTON).click()
         driver.find_element(*Locators.CONSTRUCTOR).click()
@@ -32,12 +32,12 @@ class TestTransitions:
             expected_conditions.url_changes('https://stellarburgers.nomoreparties.site/account/profile'))
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/'
 
-    def test_transitions_logo(self, driver):
+    def test_transitions_logo(self, driver, accaunt_email, accaunt_password):
         driver.find_element(*Locators.BUTTON_LOGIN).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.REGISTRATION_URL))
-        driver.find_element(*Locators.EMAIL_2).send_keys("Malgina_6@gmail.com")
-        driver.find_element(*Locators.PASSWORD_2).send_keys("1q2w2q1w")
+        driver.find_element(*Locators.EMAIL_2).send_keys(accaunt_email)
+        driver.find_element(*Locators.PASSWORD_2).send_keys(accaunt_password)
         driver.find_element(*Locators.LOGIN_BUTTON).click()
         driver.find_element(*Locators.ACCAUNT_BUTTON).click()
         driver.find_element(*Locators.LOGO).click()
@@ -46,7 +46,7 @@ class TestTransitions:
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/'
 
     # Проверь выход по кнопке «Выйти» в личном кабинете
-    def test_transitions_exit(self, driver):
+    def test_transitions_exit(self, driver, accaunt_email, accaunt_password):
         driver.find_element(*Locators.BUTTON_LOGIN).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.REGISTRATION_URL))
@@ -60,5 +60,3 @@ class TestTransitions:
         WebDriverWait(driver, 10).until(
             expected_conditions.url_changes('https://stellarburgers.nomoreparties.site/account/profile'))
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
-
-        driver.quit()

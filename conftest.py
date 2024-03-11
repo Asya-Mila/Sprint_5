@@ -5,7 +5,14 @@ from selenium import webdriver
 
 
 @pytest.fixture
-def generate_random_password(length=5):
+def generate_random_password(length=6):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    random_password = ''.join(random.choice(characters) for _ in range(length))
+    return random_password
+
+
+@pytest.fixture
+def generate_random_wrong_password(length=5):
     characters = string.ascii_letters + string.digits + string.punctuation
     random_password = ''.join(random.choice(characters) for _ in range(length))
     return random_password
@@ -21,6 +28,18 @@ def generate_random_email():
 
 
 @pytest.fixture
+def accaunt_email():
+    email = 'Malgina_6@gmail.com'
+    return email
+
+
+@pytest.fixture
+def accaunt_password():
+    password = '1q2w2q1w'
+    return password
+
+
+@pytest.fixture
 def generate_random_username():
     names = ['Alice', 'Bob', 'Charlie', 'David', 'Emily']
     random_name = random.choice(names)
@@ -33,4 +52,3 @@ def driver():
     driver.get("https://stellarburgers.nomoreparties.site/")
     yield driver
     driver.quit()
-

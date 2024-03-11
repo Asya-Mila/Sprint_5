@@ -1,7 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import Locators
-from conftyest import driver
+from conftest import driver
 
 
 class TestConstructor:
@@ -25,5 +25,3 @@ class TestConstructor:
         driver.find_element(*Locators.FILLINGS).click()
         assert WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.FILLINGS_PAGE_NAME))
-
-        driver.quit()

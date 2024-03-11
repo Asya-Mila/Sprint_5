@@ -1,5 +1,3 @@
-from typing import Tuple
-
 from selenium.webdriver.common.by import By
 
 
@@ -17,8 +15,8 @@ class Locators:
     # Для тестов входа на страницу
     BUTTON_LOGIN = (By.XPATH, ".//button[text()='Войти в аккаунт']")  # кнопка "Войти в аккаунт"
     REGISTRATION_URL = (By.XPATH, ".//a[@href='/register']")  # ссылка в "Зарегистрироваться"
-    EMAIL_2 = (By.XPATH, ".//h2[text()='Вход']/..//label[text() = 'Email']/../input") # Поле email
-    PASSWORD_2 = (By.XPATH, ".//h2[text()='Вход']/..//label[text() = 'Пароль']/../input") # Поле password
+    EMAIL_2 = (By.XPATH, ".//h2[text()='Вход']/..//label[text() = 'Email']/../input")  # Поле email
+    PASSWORD_2 = (By.XPATH, ".//h2[text()='Вход']/..//label[text() = 'Пароль']/../input")  # Поле password
     LOGIN_BUTTON = (By.XPATH, ".//button[text()='Войти']")  # кнопка "Войти"
     ORDER_BUTTON = (By.XPATH, ".//button[text()='Оформить заказ']")  # кнопка "Оформить заказ" на главной странице
     REGISTRATION_LINK = By.LINK_TEXT, "Зарегистрироваться"  # По ссылке "Зарегистрироваться"
